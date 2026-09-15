@@ -12,7 +12,13 @@ Larghero G, Gu B, Anand P, Lin KJ, Schneeweiss S+, Yang J+.
 
 #### ABSTRACT
 
-Drug-induced interstitial lung disease (ILD) is a rare but sometimes fatal toxicity of immune checkpoint inhibitors and antibody-drug conjugates. Post-marketing surveillance depends on finding these cases in large healthcare databases, where manual chart review does not scale and hand-built rule-based algorithms trade the purity of the case series against the number of cases identified. We compared 12 open-weight large language models with 20 published claims-based algorithms on 309 expert-adjudicated oncology patients at Mass General Brigham, evaluating every method on the same patients using structured claims, clinical notes, or both. The models extended the positive predictive value (PPV)–yield frontier of the published algorithms under all three inputs, exceeding the most inclusive rule by 19.7 percentage points on average across the 36 model–input evaluations. Under non-differential outcome misclassification, detecting a hypothesised drug–ILD odds ratio of 3.0 at 80% power would require 591 patients with LLM phenotyping against approximately 27,200 with the strongest rule-based comparator.
+Drug-induced interstitial lung disease (ILD) is a rare but sometimes fatal toxicity of immune checkpoint inhibitors and antibody-drug conjugates. Post-marketing surveillance depends on finding these cases in large healthcare databases. Manual chart review is accurate but does not scale, so surveillance relies on rule-based algorithms applied to diagnosis codes; these must be hand-built by experts, and they trade the purity of the case series against the number of cases identified. We assessed whether large language model (LLM) phenotyping improves on published claims-based algorithms, and whether any gain yields a measurable epidemiological benefit.
+
+In a retrospective study of 309 oncology patients with ILD diagnosis codes at Mass General Brigham, we compared 12 open-weight LLMs with 20 published claims-based algorithms against expert adjudication. Probable and possible ILD were classified as positive. LLMs received claims, notes, or both. Outcomes were positive predictive value (PPV), yield (proportion classified positive), and projected association attenuation and sample-size requirements.
+
+The LLMs extended the PPV--yield frontier of the published algorithms under all three inputs, and did so without any task-specific training. Averaged across the 36 model--input evaluations, PPV exceeded that of the most inclusive rule by 19·7 percentage points. With claims alone, Qwen3-8B achieved 89·8\% PPV (95\% CI 78·2--95·6) at 15·9\% yield, versus 86·7\% (62·1--96·3) at 4·9\% for the highest-PPV rule: a higher PPV while classifying three times as many patients. With notes alone, Qwen3-32B achieved 78·9\% PPV (71·8--84·7) at 49·2\% yield, versus 64·6\% (56·8--71·6) at 51·1\% for the strongest non-specialist rule, a 14·3-point gain at comparable yield. With both inputs, Qwen3-14B achieved 100·0\% PPV (95·1--100·0) at 24·3\% yield. Under non-differential misclassification (true odds ratio 3·0; baseline ILD prevalence 10\%), the projected observed odds ratio was 2·67 for Qwen3-14B with both inputs, versus 1·07 for the strongest non-specialist rule. Detecting that association at 80\% power would require 591 patients with LLM phenotyping, against approximately 27,200 with the rule.
+
+Zero-shot LLMs offer a higher-PPV alternative to rule-based claims phenotyping for drug-induced ILD, whether the input is structured claims, clinical notes, or both. Because the claims-only configuration uses exactly the codes that existing algorithms consume, it is an immediately deployable upgrade for administrative databases without linked notes, and may recover drug-safety signal otherwise lost to outcome misclassification.
 
 <p align="center">
   <img src="docs/fig1.png" width="900" alt="Study design: cohort construction, rule-based comparators, and the LLM phenotyping pipeline">
@@ -36,21 +42,6 @@ as-is by a third party. The code is provided for transparency: to document
 exactly how the cohort was built, how prompts were serialized, how inference
 was run, and how every reported number was produced.
 
-## Expected inputs
-
-The pipeline expects these files (linked into `shared/data/` by `scaffold.sh`):
-
-| File | Contents |
-|---|---|
-| `patient_windows/<patient_id>.json` | per-patient demographics, claims events (diagnoses, procedures, medications) and index date |
-| `ehr_windowed_typed.parquet` | clinical notes: `Patient_Num_New`, `text_clean`, `UPDATE_DATE`, `note_type`, `ild_priority` |
-| `window_stats.csv` | per-patient `patient_id`, `final_diagnosis`, `gold_label`, `has_ehr`, `cancer_group`, `age_at_index`, `n_ehr_notes` |
-| `patient_drug_exposure.csv` | `Patient_Num` plus ILD-risk drug exposure |
-| `ILD_01_EMPI_Final_Diagnosis_360.xlsx` | reference standard: `EMPI`, `Final_diagnosis`, and 19 `Algorithm_*` flag columns (published rules) |
-| `df_dx_mapping.csv`, `df_px_mapping.csv` | ICD / CPT code-to-description maps |
-
-Model weights are read from a local checkpoint directory (one subdirectory per
-model, HuggingFace format).
 
 ## Pipeline
 
