@@ -1,4 +1,4 @@
-# ild-llm-phenotyping — Zero-shot LLM phenotyping of drug-induced interstitial lung disease
+#  Zero-shot LLM phenotyping of drug-induced interstitial lung disease
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![vLLM](https://img.shields.io/badge/vLLM-0.19.0-FF6B6B.svg?style=flat)](https://github.com/vllm-project/vllm)
