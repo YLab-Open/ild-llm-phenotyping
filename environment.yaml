@@ -1,0 +1,20 @@
+# Minimal environment: direct dependencies only, versions from the recorded
+# environment used for the published analysis.
+# vllm and torch are needed only for stages/s3_infer.py; everything downstream
+# runs on CPU.
+name: ild-llm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.15
+  - pip
+  - pip:
+      - numpy>=2.2.6
+      - pandas>=2.3.3
+      - scipy>=1.17.1
+      - pyyaml>=6.0.3
+      - openpyxl>=3.1.5      # pandas.read_excel on the reference-standard .xlsx
+      - pyarrow>=23.0.1      # pandas.read_parquet on the notes extract
+      - transformers==4.57.6 # pinned: guided decoding depends on this version
+      - vllm==0.19.0         # pinned: guided decoding depends on this version
+      - torch>=2.10.0

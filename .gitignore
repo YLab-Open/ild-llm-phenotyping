@@ -1,0 +1,19 @@
+# Generated inputs and outputs
+shared/data/
+shared/cohort/core_cohort.csv
+shared/cohort/core_cohort_summary.txt
+results/
+logs/
+analysis/results/
+
+# Data and output formats — nothing of these kinds may enter the public repo
+*.csv
+*.json
+*.jsonl
+*.parquet
+*.xlsx
+*.pdf
+*.png
+
+__pycache__/
+*.pyc
