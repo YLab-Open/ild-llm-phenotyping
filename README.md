@@ -1,4 +1,22 @@
-# ILD phenotyping with large language models — analysis code
+# ild-llm-phenotyping — Zero-shot LLM phenotyping of drug-induced interstitial lung disease
+
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![vLLM](https://img.shields.io/badge/vLLM-0.19.0-FF6B6B.svg?style=flat)](https://github.com/vllm-project/vllm)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+### Identifying interstitial lung disease with large language models on clinical notes and claims
+
+Larghero G, Gu B, Anand P, Lin KJ, Schneeweiss S+, Yang J+.
+
+*+Correspondence to Sebastian Schneeweiss and Jie Yang.*
+
+#### ABSTRACT
+
+Drug-induced interstitial lung disease (ILD) is a rare but sometimes fatal toxicity of immune checkpoint inhibitors and antibody-drug conjugates. Post-marketing surveillance depends on finding these cases in large healthcare databases, where manual chart review does not scale and hand-built rule-based algorithms trade the purity of the case series against the number of cases identified. We compared 12 open-weight large language models with 20 published claims-based algorithms on 309 expert-adjudicated oncology patients at Mass General Brigham, evaluating every method on the same patients using structured claims, clinical notes, or both. The models extended the positive predictive value (PPV)–yield frontier of the published algorithms under all three inputs, exceeding the most inclusive rule by 19.7 percentage points on average across the 36 model–input evaluations. Under non-differential outcome misclassification, detecting a hypothesised drug–ILD odds ratio of 3.0 at 80% power would require 591 patients with LLM phenotyping against approximately 27,200 with the strongest rule-based comparator.
+
+<p align="center">
+  <img src="docs/fig1.png" width="900" alt="Study design: cohort construction, rule-based comparators, and the LLM phenotyping pipeline">
+</p>
 
 Code accompanying a study that used open-weight large language models to
 identify interstitial lung disease (ILD) in cancer patients from clinical

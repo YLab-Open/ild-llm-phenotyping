@@ -17,3 +17,6 @@ analysis/results/
 
 __pycache__/
 *.pyc
+# Figure used in the README
+!docs/fig1.png
+.DS_Store
