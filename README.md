@@ -1,4 +1,7 @@
 #  Zero-shot LLM phenotyping of drug-induced interstitial lung disease
+[![medRxiv](https://img.shields.io/badge/medRxiv-2026.10.30.26366942-b31b1b.svg)](https://www.medrxiv.org/content/10.64898/2026.10.30.26366942v1)
+
+Code for **"Identifying interstitial lung disease with large language models on clinical notes and claims"** (preprint: [medRxiv](https://www.medrxiv.org/content/10.64898/2026.10.30.26366942v1)).
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![vLLM](https://img.shields.io/badge/vLLM-0.19.0-FF6B6B.svg?style=flat)](https://github.com/vllm-project/vllm)
@@ -6,7 +9,7 @@
 
 ### Identifying interstitial lung disease with large language models on clinical notes and claims
 
-Larghero G, Gu B, Anand P, Lin KJ, Schneeweiss S+, Yang J+.
+Larghero G, Schneeweiss S, Gu B, Anand P, Lin KJ, , Yang J+.
 
 *+Correspondence to Sebastian Schneeweiss and Jie Yang.*
 
@@ -32,7 +35,6 @@ were run through a single deterministic pipeline across three input
 configurations (claims only, notes only, fused); twelve are in the reported
 set.
 
-> Citation: [PLACEHOLDER — paper citation to be added on publication]
 
 ## Data availability
 
@@ -103,3 +105,20 @@ conda activate ild-llm
 `environment.yaml` is the minimal environment: direct dependencies only, with
 the versions actually used. `vllm` and `torch` are needed only for
 `stages/s3_infer.py`; everything downstream runs on CPU.
+
+## Citation
+
+If you use this code, please cite:
+
+> Larghero G, Schneeweiss S, Gu B, Anand P, Lin KJ, Yang J. Identifying interstitial lung disease with large language models on clinical notes and claims. *medRxiv* 2026. doi:10.64898/2026.10.30.26366942
+
+```bibtex
+@article{larghero2026ild,
+  title   = {Identifying interstitial lung disease with large language models on clinical notes and claims},
+  author  = {Larghero, Guillaume and Schneeweiss, Sebastian and Gu, Bowen and Anand, Priyanka and Lin, Kueiyu Joshua and Yang, Jie},
+  journal = {medRxiv},
+  year    = {2026},
+  doi     = {10.64898/2026.10.30.26366942},
+  url     = {https://www.medrxiv.org/content/10.64898/2026.10.30.26366942v1}
+}
+```
